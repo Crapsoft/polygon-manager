@@ -65,6 +65,8 @@ Point& Point::operator--() { //prefix
 	return *this;
 }
 
+
+
 Point::~Point()
 {
 }

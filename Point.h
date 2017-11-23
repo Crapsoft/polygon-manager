@@ -14,8 +14,13 @@ public:
 	double getX();
 	double getY();
 
-	Point* operator+(Point& p2);
-	Point* operator-(Point& p2);
+	const Point operator+(const Point& rhs) const;
+	const Point operator-(const Point& rhs) const;
+	Point& operator+=(const Point& rhs);
+	Point& operator-=(const Point& rhs);
+	Point& operator++();
+	Point& operator--();
+
 	~Point();
 };
 

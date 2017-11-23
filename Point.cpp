@@ -1,5 +1,6 @@
 #include "Point.h"
-
+#include <iostream>
+using namespace std;
 Point::Point(double _x, double _y) : x(_x), y(_y) {
 }
 
@@ -28,18 +29,49 @@ double Point::getY() {
 	return y;
 }
 
-Point* Point::operator+( Point& p2) {
-	Point* new_point = new Point();
-	double new_x = this->x + p2.getX();
-	double new_y = this->y + p2.getY();
-	return new Point(new_x, new_y);
+const Point Point::operator+(const Point& rhs) const {
+	return Point(*this) += rhs;
 }
 
-Point* Point::operator-(Point& p2) {
-	Point* new_point = new Point();
-	double new_x = this->x - p2.getX();
-	double new_y = this->y - p2.getY();
-	return new Point(new_x, new_y);
+const Point Point::operator-(const Point& rhs) const {
+	return Point(*this) -= rhs;
+}
+
+
+Point& Point::operator+=(const Point& rhs) {
+	x += rhs.x;
+	y += rhs.y;
+	return *this;
+}
+
+
+Point& Point::operator-=(const Point& rhs) {
+	x += rhs.x;
+	y += rhs.y;
+	return *this;
+}
+
+
+Point& Point::operator++() { //prefix
+	x++;
+	y++;
+	return *this;
+}
+
+
+Point& Point::operator--() { //prefix
+	x--;
+	y--;
+	return *this;
+}
+void main() {
+	Point p1(3.2, 3.2);
+	Point p2(3.2, 3.2);
+	Point p3 = p1 + p2;
+	p3 += p1;
+	cout << p3.getX();
+	system("pause");
+
 }
 
 

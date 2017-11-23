@@ -65,11 +65,12 @@ Point& Point::operator--() { //prefix
 	return *this;
 }
 void main() {
-	Point p1(3.2, 3.2);
-	Point p2(3.2, 3.2);
-	Point p3 = p1 + p2;
-	p3 += p1;
-	cout << p3.getX();
+	//Point p1(3.2, 3.2);
+	//Point p2(3.2, 3.2);
+	//Point p3 = p1 + p2;
+	//p3 += p1;
+	//cout << p3.getX();
+
 	system("pause");
 
 }

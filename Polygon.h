@@ -1,6 +1,7 @@
 #pragma once
 #include "Point.h"
 #include <iostream>
+using namespace std;
 class Polygon
 {
 private:
@@ -9,8 +10,9 @@ private:
 public:
 	Polygon(int _size);
 	Polygon( Point* _points ,int _size);
-	void transfer_by_x(int x);
-	void transfer_by_y(int y);
+	void transfer_by_x(double x);
+	void transfer_by_y(double y);
+	void transfer_by_point(Point& p);
 	~Polygon();
 };
 

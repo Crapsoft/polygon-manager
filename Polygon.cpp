@@ -68,21 +68,55 @@ void Polygon::scale_by_scalar(double scalar)
 	avg_x /= size;
 	avg_y /= size;
 
-	Point *center = new Point(avg_x, avg_y);
+	Point center = Point(avg_x, avg_y);
+
+	for (int i = 0; i < size; i++)
+	{
+		double delta_x = points[i].getX() - center.getX();
+		points[i].setX(points[i].getX() + delta_x * scalar);
+
+		double delta_y = points[i].getY() - center.getY();
+		points[i].setY(points[i].getY() + delta_y * scalar);
+	}
 }
 
-//void main() {
-//	Point* p = new Point[5];
-//	for (int i = 0; i < 5; i++)
-//	{
-//		Point point(1.0, 1.0);
-//		p[i] = point;
-//	}
-//	Polygon *polygon = new Polygon(p, 5);
-//	polygon->transfer_by_point(Point(2,4));
-//	system("pause");
-//
-//}
+void Polygon::print_points() const
+{
+	for (int i = 0; i < size; i++)
+	{
+		points[i].print_point();
+	}
+	cout << endl << endl;
+}
+
+
 Polygon::~Polygon()
 {
+}
+
+
+void main() {
+	Point *p = new Point[5];
+	p[0] = Point(0, 0);
+	p[1] = Point(3, 0);
+	p[2] = Point(3, 3);
+	p[3] = Point(1.5, 4.5);
+	p[4] = Point(0, 3);
+
+	Polygon poly = Polygon(p, 5);
+	cout << "Initial polygon: \n";
+	poly.print_points();
+	
+	poly.scale_by_scalar(2);
+	cout << "Multiplied by 2: \n";
+	poly.print_points();
+
+	poly.transfer_by_point(Point(2,4));
+	cout << "+ (2, 4): \n";
+	poly.print_points();
+	
+	delete [] p;
+
+	system("pause");
+
 }

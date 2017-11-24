@@ -51,20 +51,10 @@ Point& Point::operator-=(const Point& rhs) {
 	return *this;
 }
 
-
-Point& Point::operator++() { //prefix
-	x++;
-	y++;
-	return *this;
+void Point::print_point()
+{
+	cout << '(' << x << ", " << y << ')' << endl;
 }
-
-
-Point& Point::operator--() { //prefix
-	x--;
-	y--;
-	return *this;
-}
-
 
 
 Point::~Point()

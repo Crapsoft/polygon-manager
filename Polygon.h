@@ -14,6 +14,7 @@ public:
 	void transfer_by_y(double y);
 	void transfer_by_point(Point& p);
 	void scale_by_scalar(double scalar);
+	void print_points()const;
 	~Polygon();
 };
 

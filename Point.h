@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 class Point
 {
 private:
@@ -18,8 +19,8 @@ public:
 	const Point operator-(const Point& rhs) const;
 	Point& operator+=(const Point& rhs);
 	Point& operator-=(const Point& rhs);
-	Point& operator++();
-	Point& operator--();
+
+	void print_point();
 
 	~Point();
 };

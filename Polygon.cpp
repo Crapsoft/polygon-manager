@@ -54,6 +54,23 @@ void Polygon::transfer_by_point(Point& p) {
 	}
 }
 
+void Polygon::scale_by_scalar(double scalar)
+{
+	double avg_x = 0;
+	double avg_y = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		avg_x += points[i].getX();
+		avg_y += points[i].getY();
+	}
+
+	avg_x /= size;
+	avg_y /= size;
+
+	Point *center = new Point(avg_x, avg_y);
+}
+
 //void main() {
 //	Point* p = new Point[5];
 //	for (int i = 0; i < 5; i++)

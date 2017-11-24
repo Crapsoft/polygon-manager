@@ -46,8 +46,8 @@ Point& Point::operator+=(const Point& rhs) {
 
 
 Point& Point::operator-=(const Point& rhs) {
-	x += rhs.x;
-	y += rhs.y;
+	x -= rhs.x;
+	y -= rhs.y;
 	return *this;
 }
 

@@ -13,6 +13,7 @@ public:
 	void transfer_by_x(double x);
 	void transfer_by_y(double y);
 	void transfer_by_point(Point& p);
+	void scale_by_scalar(double scalar);
 	~Polygon();
 };
 

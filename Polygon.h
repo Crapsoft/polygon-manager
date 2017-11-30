@@ -1,7 +1,10 @@
 #pragma once
 #include "Point.h"
 #include <iostream>
+#include <windows.h>
+
 using namespace std;
+
 class Polygon
 {
 private:
@@ -15,6 +18,7 @@ public:
 	void transfer_by_point(Point& p);
 	void scale_by_scalar(double scalar);
 	void print_points()const;
+	void draw();
 	~Polygon();
 };
 

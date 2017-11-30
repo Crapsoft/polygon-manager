@@ -1,0 +1,15 @@
+﻿  Source.cpp
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(107): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(108): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(112): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(113): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\admin\documents\github\polygon-manager\source.cpp(11): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "poly"
+c:\users\admin\documents\github\polygon-manager\source.cpp(11): warning C4551: в вызове функции отсутствует список аргументов
+c:\users\admin\documents\github\polygon-manager\source.cpp(11): error C2065: poly: необъявленный идентификатор
+c:\users\admin\documents\github\polygon-manager\source.cpp(11): error C2660: Polygon: функция не принимает 2 аргументов
+  Polygon.cpp
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(107): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(108): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(112): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\admin\documents\github\polygon-manager\polygon.cpp(113): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  Создание кода...

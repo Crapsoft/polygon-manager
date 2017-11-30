@@ -89,34 +89,35 @@ void Polygon::print_points() const
 	cout << endl << endl;
 }
 
+void Polygon::draw() {
+	POINT op;
+	HWND Desc = GetConsoleWindow();
+	HDC hDC = GetDC(Desc);
+	SelectObject(hDC, GetStockObject(WHITE_PEN));
+	MoveToEx(hDC, 600, 0, &op);
+	//тут малюю декартову площину
+	LineTo(hDC, 600, 600);
+	MoveToEx(hDC, 200, 300, &op);
+	LineTo(hDC, 1000, 300);
+	ReleaseDC(Desc, hDC);
+	//міняю колір ручки
+	HPEN pen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+	SelectObject(hDC, pen);
+	//з першої точки до останньої
+	MoveToEx(hDC, points[0].getX() + 600, fabs(points[0].getY() - 300), &op);
+	LineTo(hDC, points[size - 1].getX() + 600, fabs(points[size - 1].getY() - 300));
+	//від першої по порядку до size - 1, бо лінія між першою і останньою вже намальвана
+	for (int i = 0; i < size - 1; i++)
+	{
+		MoveToEx(hDC, points[i].getX() + 600, fabs(points[i].getY() - 300), &op);
+		LineTo(hDC, points[i+1].getX() + 600, fabs(points[i+1].getY() - 300));
+	}
+}
+
 
 Polygon::~Polygon()
 {
 }
 
 
-void main() {
-	Point *p = new Point[5];
-	p[0] = Point(0, 0);
-	p[1] = Point(3, 0);
-	p[2] = Point(3, 3);
-	p[3] = Point(1.5, 4.5);
-	p[4] = Point(0, 3);
 
-	Polygon poly = Polygon(p, 5);
-	cout << "Initial polygon: \n";
-	poly.print_points();
-	
-	poly.scale_by_scalar(2);
-	cout << "Multiplied by 2: \n";
-	poly.print_points();
-
-	poly.transfer_by_point(Point(2,4));
-	cout << "+ (2, 4): \n";
-	poly.print_points();
-	
-	delete [] p;
-
-	system("pause");
-
-}

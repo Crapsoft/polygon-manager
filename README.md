@@ -6,6 +6,10 @@ A simple, text-driven, turn-based polygon manager for true polygon fans!
 
 PolyGon - простий, мінімалістичний додаток для роботи з багатокутниками.
 
+Робота з PolyGon - це веселощі та задоволення!
+
+![Image of PolyGon](https://scontent.flwo1-1.fna.fbcdn.net/v/t34.0-12/24273187_193914944490395_1085350911_n.png?oh=0ff53f99076e3fb685bbc170addb1d22&oe=5A22EBC4)
+
 Можливості PolyGon:
 
 * створення

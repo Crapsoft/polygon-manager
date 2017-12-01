@@ -7,19 +7,19 @@ using namespace std;
 
 void hello();
 void help();
-Polygonn add();
-void print_db(vector<Polygonn> v);
-void print_cur(int cur, vector<Polygonn> v);
-int swichh(vector<Polygonn> v);
-void shiftX(vector<Polygonn> v, int cur);
-void shiftY(vector<Polygonn> v, int cur);
-void move(vector<Polygonn> v, int cur);
-void scale(vector<Polygonn> v, int cur);
+Polygonn* add();
+void print_db(vector<Polygonn*> v);
+void print_cur(int cur, vector<Polygonn*> v);
+int swichh(vector<Polygonn*> v);
+void shiftX(vector<Polygonn*> v, int cur);
+void shiftY(vector<Polygonn*> v, int cur);
+void move(vector<Polygonn*> v, int cur);
+void scale(vector<Polygonn*> v, int cur);
 
 
 int main()
 {
-	vector<Polygonn> database;
+	vector<Polygonn*> database;
 
 	int cur = 0;
 
@@ -29,6 +29,9 @@ int main()
 
 	cin >> command;
 
+	vector<Point> temp;
+	char x, y;
+
 	while (command != "-exit")
 	{
 		if (command == "-h")
@@ -37,11 +40,47 @@ int main()
 		}
 		else if (command == "-add")
 		{
-			database.push_back(add());
+			cout << "Yay, you can create you own polygon now!" << endl;
+			cout << "Please input points until you want to stop, then type in \"S\"" << endl;
+			
+			while (temp.size() > 0)
+			{
+				temp.pop_back();
+			}
+
+			while (true)
+			{
+				cin >> x;
+				if (x == 'S')
+				{
+					break;
+				}
+				cin >> y;
+				temp.push_back(Point((int)(x - '0'), (int)(y - '0')));
+			}
+
+			Polygonn *poly = new Polygonn(temp);
+			
+			database.push_back(poly);
+
+			cout << "Created new polygon";
+			cout << endl << endl;
 		}
 		else if (command == "-list")
 		{
-			print_db(database);
+			cout << "Currently available polygons: " << endl;
+
+			for (int i = 0; i < database.size(); i++)
+			{
+				cout << "Poly" << (i + 1) << ':' << endl;
+				database[i]->print_points();
+			}
+
+			if (database.size() == 0)
+			{
+				cout << "There are no polygons available ";
+				cout << endl << endl;
+			}			
 		}
 		else if (command == "-cur")
 		{
@@ -109,9 +148,10 @@ void help()
 	cout << "-scale     Scale the current polygon by scalar" << endl;
 	cout << "-h         Display help" << endl;
 	cout << "-exit      Exit PolyGon" << endl;
+	cout << endl << endl;
 }
 
-Polygonn add()
+Polygonn* add()
 {
 	cout << "Yay, you can create you own polygon now!" << endl;
 	cout << "Please input points until you want to stop, then type in \"S\"" << endl;
@@ -130,19 +170,19 @@ Polygonn add()
 		temp.push_back(Point(x, y));
 	}
 
-	Polygonn poly(temp);
+	Polygonn *poly = new Polygonn(temp);
 
 	return poly;
 }
 
-void print_db(vector<Polygonn> v)
+void print_db(vector<Polygonn*> v)
 {
 	cout << "Currently available polygons: " << endl;
 
 	for (int i = 0; i < v.size(); i++)
 	{
 		cout << "Poly" << (i + 1) << ':' << endl;
-		v[i].print_points();
+		v[i]->print_points();
 	}
 
 	if (v.size() == 0)
@@ -153,21 +193,22 @@ void print_db(vector<Polygonn> v)
 	cout << endl << endl;
 }
 
-void print_cur(int cur, vector<Polygonn> v)
+void print_cur(int cur, vector<Polygonn*> v)
 {
 	if (cur == 0)
 	{
 		cout << "No polygon currently selected ";
+		cout << endl << endl;
 	}
 	else
 	{
 		cout << "Poly " << cur << ':' << endl;
-		v[cur - 1].print_points();
+		v[cur - 1]->print_points();
 	}
-	cout << endl << endl;
+	
 }
 
-int swichh(vector<Polygonn> v)
+int swichh(vector<Polygonn*> v)
 {
 	cout << "Please enter the number of desired polygon: ";
 	int in;
@@ -189,45 +230,45 @@ int swichh(vector<Polygonn> v)
 	}
 }
 
-void shiftX(vector<Polygonn> v, int cur)
+void shiftX(vector<Polygonn*> v, int cur)
 {
 	cout << "Please enter the OX shift value: ";
 	double shift;
 	cin >> shift;
 
-	v[cur - 1].transfer_by_x(shift);
+	v[cur - 1]->transfer_by_x(shift);
 
 	cout << "Operation successfull" << endl << endl;
 }
 
-void shiftY(vector<Polygonn> v, int cur)
+void shiftY(vector<Polygonn*> v, int cur)
 {
 	cout << "Please enter the OY shift value: ";
 	double shift;
 	cin >> shift;
 
-	v[cur - 1].transfer_by_y(shift);
+	v[cur - 1]->transfer_by_y(shift);
 
 	cout << "Operation successfull" << endl << endl;
 }
 
-void move(vector<Polygonn> v, int cur)
+void move(vector<Polygonn*> v, int cur)
 {
 	double x, y;
 	cout << "Please enter desired vector: ";
 	cin >> x;
 	cin >> y;
-	v[cur - 1].transfer_by_point(Point(x, y));
+	v[cur - 1]->transfer_by_point(Point(x, y));
 
 	cout << "Operation successfull" << endl << endl;
 }
 
-void scale(vector<Polygonn> v, int cur)
+void scale(vector<Polygonn*> v, int cur)
 {
 	cout << "Please enter the scalar: ";
 	double scalar;
 	cin >> scalar;
-	v[cur - 1].scale_by_scalar(scalar);
+	v[cur - 1]->scale_by_scalar(scalar);
 
 	cout << "Operation successfull" << endl << endl;
 }

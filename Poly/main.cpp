@@ -233,6 +233,13 @@ int swichh(vector<Polygonn*> v)
 
 void shiftX(vector<Polygonn*> v, int cur)
 {
+	if (cur == 0)
+	{
+		cout << "No polygon chosen!!";
+		cout << endl << endl;
+		return;
+	}
+
 	cout << "Please enter the OX shift value: ";
 	double shift;
 	cin >> shift;
@@ -244,6 +251,13 @@ void shiftX(vector<Polygonn*> v, int cur)
 
 void shiftY(vector<Polygonn*> v, int cur)
 {
+	if (cur == 0)
+	{
+		cout << "No polygon chosen!!";
+		cout << endl << endl;
+		return;
+	}
+
 	cout << "Please enter the OY shift value: ";
 	double shift;
 	cin >> shift;
@@ -255,6 +269,13 @@ void shiftY(vector<Polygonn*> v, int cur)
 
 void move(vector<Polygonn*> v, int cur)
 {
+	if (cur == 0)
+	{
+		cout << "No polygon chosen!!";
+		cout << endl << endl;
+		return;
+	}
+
 	double x, y;
 	cout << "Please enter desired vector: ";
 	cin >> x;
@@ -266,6 +287,13 @@ void move(vector<Polygonn*> v, int cur)
 
 void scale(vector<Polygonn*> v, int cur)
 {
+	if (cur == 0)
+	{
+		cout << "No polygon chosen!!";
+		cout << endl << endl;
+		return;
+	}
+
 	cout << "Please enter the scalar: ";
 	double scalar;
 	cin >> scalar;

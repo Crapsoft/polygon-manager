@@ -2,6 +2,7 @@
 #include "Polygonn.h"
 #include <string>
 #include <exception>
+#include <cstdlib>
 
 using namespace std;
 
@@ -30,7 +31,7 @@ int main()
 	cin >> command;
 
 	vector<Point> temp;
-	char x, y;
+	string x, y;
 
 	while (command != "-exit")
 	{
@@ -51,12 +52,12 @@ int main()
 			while (true)
 			{
 				cin >> x;
-				if (x == 'S')
+				if (x == "S")
 				{
 					break;
 				}
 				cin >> y;
-				temp.push_back(Point((int)(x - '0'), (int)(y - '0')));
+				temp.push_back(Point(stod(x), stod(y)));
 			}
 
 			Polygonn *poly = new Polygonn(temp);
@@ -116,7 +117,7 @@ int main()
 		cin >> command;
 	}
 
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	cout << "Thank you for using PolyGon 1.2.0!";
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	cout << endl << endl;
